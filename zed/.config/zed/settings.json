@@ -1,0 +1,79 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "edit_predictions": {
+    "provider": "copilot"
+  },
+  "session": {
+    "trust_all_worktrees": false
+  },
+  "cli_default_open_behavior": "new_window",
+  "preferred_line_length": 80,
+  "soft_wrap": "none",
+  "show_wrap_guides": true,
+  "wrap_guides": [80, 100, 120],
+  "agent_buffer_font_size": 12.0,
+  "agent_ui_font_size": 14.0,
+  "ui_font_family": "Hack Nerd Font",
+  "buffer_font_family": "Hack Nerd Font",
+  "terminal": {
+    "font_family": "Hack Nerd Font Mono",
+  },
+  "icon_theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Frappé"
+  },
+  "ui_font_size": 14.0,
+  "buffer_font_size": 12.0,
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Frappé"
+  },
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "agent": {
+    "sandbox_permissions": {
+      "network_hosts": [
+        "zed.dev",
+        "raw.githubusercontent.com"
+      ]
+    },
+    "terminal_init_command": "/bin/zsh",
+    "default_model": {
+      "effort": "high",
+      "provider": "copilot_chat",
+      "model": "claude-fable-5.1",
+      "enable_thinking": true
+    },
+    "sidebar_side": "right",
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    },
+    "github-copilot-cli": {
+      "type": "registry"
+    }
+  },
+}

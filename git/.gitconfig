@@ -1,0 +1,22 @@
+[user]
+	name = Daniel Schier
+	email = dschier@while-true-do.io
+	signingkey = ~/.ssh/id_ed25519.pub
+[init]
+	defaultBranch = trunk
+[commit]
+	template = ~/.gitmessage
+	gpgsign = true
+[tag]
+	gpgsign = true
+[gpg]
+	format = ssh
+[includeIf "gitdir:~/Projects/github.com/cozybadgerde/"]
+	path = ~/.gitconfig-cozybadger
+[includeIf "gitdir:~/Projects/github.com/badgercloudde/"]
+	path = ~/.gitconfig-cozybadger
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

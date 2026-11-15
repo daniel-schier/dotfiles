@@ -1,0 +1,28 @@
+separator = " | "
+
+palette       = "adaptive"
+palette_dark  = "catppuccin-mocha"
+palette_light = "catppuccin-latte"
+
+fields = ["os", "host", "uptime", "load", "memory", "disk"]
+
+[os]
+icon = ""
+
+[host]
+icon = ""
+
+[uptime]
+icon = ""
+
+[load]
+icon = ""
+
+[memory]
+icon = ""
+
+[disk]
+icon = ""
+
+[ip]
+icon   = ""

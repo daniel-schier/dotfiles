@@ -1,0 +1,64 @@
+# peek configuration.
+#
+# This is peek's own config file. It declares the data sources peek reads to
+# build the server inventory, the connection command presets, and the order
+# presets are tried for the primary (Enter) action.
+#
+# Paths may use ~ for your home directory and ${ENV} references.
+
+# Ordered list of connection presets to try for the primary (Enter) action.
+primary = ["ssh", "web"]
+
+# --- Sources -----------------------------------------------------------------
+# Each [[sources]] block is one place peek discovers hosts. When the same host
+# appears in several sources, the higher priority wins a field conflict and the
+# losing value is kept for provenance.
+
+# Read hosts from your OpenSSH client config. This is the file OpenSSH itself
+# uses (~/.ssh/config); peek parses its Host blocks. Enabled by default so peek
+# is useful with no setup.
+[[sources]]
+type = "ssh_config"
+name = "ssh_config"
+priority = 10
+path = "~/.ssh/config"
+
+# A YAML inventory you maintain by hand. Uncomment to enable. The optional
+# [sources.map] translates the file's keys into peek fields; the special
+# targets "name" and "id" set a host's identity. Without a map, the file's
+# native keys are used as-is.
+# [[sources]]
+# type = "yaml"
+# name = "servers"
+# priority = 20
+# path = "~/.config/peek/servers.yaml"
+# [sources.map]
+# name = "hostname"
+# host = "ip"
+
+# --- Connections -------------------------------------------------------------
+# Command presets. `command` is a Go text/template rendered with the selected
+# host's fields (e.g. {{.host}}, {{.user}}, {{.url}}). `when` names a field that
+# must be present for the preset to apply; omit it for "always applicable".
+# `browser = true` opens the rendered command (a URL) with your OS default
+# opener instead of running it in the terminal.
+
+[connections.ssh]
+command = "ssh {{if .user}}{{.user}}@{{end}}{{.host}}{{if .port}} -p {{.port}}{{end}}"
+when = "host"
+
+[connections.web]
+command = "{{.url}}"
+when = "url"
+browser = true
+
+# Extra preset examples. Uncomment to add them to the `c` menu. mosh is a
+# drop-in ssh alternative; a browser preset (browser = true) opens a URL such
+# as a Grafana dashboard with your OS default opener.
+# [connections.mosh]
+# command = "mosh {{if .user}}{{.user}}@{{end}}{{.host}}"
+# when = "host"
+# [connections.grafana]
+# command = "https://grafana.example.com/d/host/{{.name}}"
+# when = "name"
+# browser = true
