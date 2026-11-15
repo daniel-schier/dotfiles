@@ -13,6 +13,7 @@ directory.
 | `agents`   | `~/.agents/`: instructions, agents, skills, and templates |
 | `ghostty`  | `~/.config/ghostty/config`                                  |
 | `git`      | `~/.gitconfig`, `~/.gitconfig-cozybadger`, `~/.gitmessage` |
+| `mise`     | `~/.config/mise/config.toml`                                |
 | `peek`     | `~/.config/peek/config.toml`                                 |
 | `peep`     | `~/.config/peep/peep.toml`                                  |
 | `ssh`      | `~/.ssh/config`                                             |
@@ -44,10 +45,32 @@ Resolve those conflicts before retrying.
 
 Install the applications used by the packages separately. The shell
 configuration uses Homebrew on Apple Silicon and starts without optional tools
-such as `fnm`, Starship, and `peep`.
+such as Starship and `peep`.
 
-Mise pins repository check tools and runs tasks. It does not manage your global
-Node.js or npm environment; fnm remains unchanged.
+Mise pins repository check tools and runs tasks. The `mise` package provides
+your global Node.js and npm environment.
+
+## Node.js and npm
+
+After stowing the `mise` package, install its tools and open a new terminal:
+
+```bash
+mise install
+```
+
+The global config selects the current Node.js LTS line, including npm and npx.
+Projects can override this default in their mise configuration, `.nvmrc`, or
+`.node-version`. Zsh activates mise instead of fnm.
+
+Corepack and Defuddle are separate mise-managed npm tools, so they stay
+available when switching Node.js versions. To add another global CLI, use
+`mise use -g npm:<package>`.
+
+Update the installed global Node.js LTS version with:
+
+```bash
+mise upgrade node
+```
 
 ## Stow
 

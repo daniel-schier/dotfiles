@@ -37,8 +37,8 @@ _fsh="$HOMEBREW_PREFIX/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-hi
 [[ -r "$_fsh" ]] && source "$_fsh"
 unset _fsh
 
-# fnm/nodejs
-command -v fnm >/dev/null && eval "$(fnm env --use-on-cd --shell zsh)"
+# Mise
+command -v mise >/dev/null && eval "$(mise activate zsh)"
 
 # Starship
 command -v starship >/dev/null && eval "$(starship init zsh)"

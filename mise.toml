@@ -4,7 +4,7 @@ taplo = "0.10.0"
 actionlint = "1.7.12"
 
 [vars]
-packages = "agents ghostty git peek peep ssh starship zed zsh"
+packages = "agents ghostty git mise peek peep ssh starship zed zsh"
 
 [tasks.setup]
 description = "Install tools and enable this repository's Git hook"
@@ -30,7 +30,7 @@ description = "Check configuration syntax and scan working files for secrets"
 depends = ["check:toml", "check:shell", "check:workflows", "secrets"]
 
 [tasks."check:toml"]
-run = "taplo check --no-schema mise.toml .gitleaks.toml peek/.config/peek/config.toml peep/.config/peep/peep.toml starship/.config/starship.toml"
+run = "taplo check --no-schema mise.toml mise/.config/mise/config.toml .gitleaks.toml peek/.config/peek/config.toml peep/.config/peep/peep.toml starship/.config/starship.toml"
 
 [tasks."check:shell"]
 run = ["zsh -n zsh/.zshrc zsh/.zprofile", "sh -n .githooks/pre-commit"]
