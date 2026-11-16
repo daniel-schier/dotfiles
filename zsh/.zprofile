@@ -4,3 +4,5 @@ export HOMEBREW_NO_ENV_HINTS=1
 
 # Docker Desktop
 export PATH="$PATH:$HOME/.docker/bin"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
